@@ -38,6 +38,8 @@ public class UserService : IUserService
 
         var model = await this.repository.InsertAsync(mapped);
 
+        await this.repository.SacheChangAsync();
+
         return this.mapper.Map<UserForResultDto>(model);
 
     }
@@ -50,6 +52,8 @@ public class UserService : IUserService
             throw new CustomException(404, "User not found");
 
         await this.repository.DeleteAsync(id);
+        await this.repository.SacheChangAsync();
+
         return true;
         
     }
@@ -81,9 +85,12 @@ public class UserService : IUserService
             throw new CustomException(404, "User is not found");
         }
 
-        var mapper = this.mapper.Map<User>(dto);
+        var mapper = this.mapper.Map(dto,model);
         mapper.UpdatedAt = DateTime.UtcNow;
         var result = await this.repository.UpdateAsync(mapper);
+
+        await this.repository.SacheChangAsync();
+
 
         return this.mapper.Map<UserForResultDto>(result);
 

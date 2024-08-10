@@ -6,10 +6,12 @@ namespace TheEasy.Api.Middlewares;
 public class ExceptionHandlerMiddleware
 {
     private readonly RequestDelegate next;
+    private readonly ILogger<ExceptionHandlerMiddleware> logger;
 
-    public ExceptionHandlerMiddleware(RequestDelegate next)
+    public ExceptionHandlerMiddleware(RequestDelegate next, ILogger<ExceptionHandlerMiddleware> logger)
     {
         this.next = next;
+        this.logger = logger;
     }
 
     public async Task Invoke(HttpContext context)
@@ -29,6 +31,7 @@ public class ExceptionHandlerMiddleware
         }
         catch (Exception ex)
         {
+            this.logger.LogError($"{ex.Message}\n\n\n");
             context.Response.StatusCode = 500;
             await context.Response.WriteAsJsonAsync(new Response
             {

@@ -13,6 +13,7 @@ public interface IRepository<TEntity>
     public Task<bool> DeleteAsync(long id);
     public Task<TEntity> SelectByIdAsync(long id);
     public IQueryable<TEntity> SelectAll();
+    public Task<bool> SacheChangAsync();
 
 
 }

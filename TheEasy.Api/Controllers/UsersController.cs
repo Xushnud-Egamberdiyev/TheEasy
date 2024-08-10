@@ -16,12 +16,12 @@ public class UsersController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAllAsync()
     {
-        var user = userService.RetrieveAllAsync();
+        var user = await userService.RetrieveAllAsync();
         
         return Ok(user);
     }
 
-    [HttpGet("{id}")]
+    [HttpGet]
     public async Task<IActionResult> GetByIdAsync(long id)
     {
         var user = await this.userService.RetrieveByIdAsync(id);
