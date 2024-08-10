@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TheEasy.Api.Models;
 using TheEasy.Services.DTOs.Users;
 using TheEasy.Services.Interfaces;
 
@@ -15,41 +16,48 @@ public class UsersController : ControllerBase
 
     [HttpGet]
     public async Task<IActionResult> GetAllAsync()
-    {
-        var user = await userService.RetrieveAllAsync();
+        => Ok(new Response
+        {
+            StutusCode = 200,
+            Message = "OK",
+            Data = await this.userService.RetrieveAllAsync()
+        });
         
-        return Ok(user);
-    }
+  
 
     [HttpGet]
     public async Task<IActionResult> GetByIdAsync(long id)
-    {
-        var user = await this.userService.RetrieveByIdAsync(id);
-
-        return Ok(user);
-    }
+       => Ok(new Response
+       {
+           StutusCode = 200,
+           Message = "OK",
+           Data = await this.userService.RetrieveByIdAsync(id)
+       });
 
     [HttpPost]
     public async Task<IActionResult> PostAsync(UserForCreationDto dto)
-    {
-        var user = await this.userService.CreateAsync(dto);
-
-        return Ok(user);
-    }
+     => Ok(new Response
+     {
+         StutusCode = 200,
+         Message = "OK",
+         Data = await this.userService.CreateAsync(dto)
+     });
 
     [HttpPut]
     public async Task<IActionResult> UpdateAsync(UserForUpdateDto dto)
-    {
-        var user = await this.userService.UpdateAsync(dto);
-
-        return Ok(user);
-    }
+      => Ok(new Response
+      {
+          StutusCode = 200,
+          Message = "OK",
+          Data = await this.userService.UpdateAsync(dto)
+      });
 
     [HttpDelete]
     public async Task<IActionResult> DeleteAsync(long id)
-    {
-        var user = await this.userService.RemoveAsync(id);
-
-        return Ok(user);
-    }
+      => Ok(new Response
+      {
+          StutusCode = 200,
+          Message = "OK",
+          Data = await this.userService.RemoveAsync(id)
+      });
 }
