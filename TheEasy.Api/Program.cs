@@ -1,13 +1,8 @@
-
-using Microsoft.EntityFrameworkCore;
 using Serilog;
+using TheEasy.Api.Extensions;
 using TheEasy.Api.Middlewares;
 using TheEasy.Data.DbContexs;
-using TheEasy.Data.IRepositories;
-using TheEasy.Data.Repositories;
-using TheEasy.Services.Interfaces;
 using TheEasy.Services.Mappers;
-using TheEasy.Services.Services;
 
 namespace TheEasy.Api
 {
@@ -22,10 +17,13 @@ namespace TheEasy.Api
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddHttpContextAccessor();
+
+
             //Database configuration
             builder.Services.AddInfrastructure(builder.Configuration);
-            builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            builder.Services.AddScoped<IUserService, UserService>();
+
+            builder.Services.AddCustomService();
             builder.Services.AddAutoMapper(typeof(MappingProfile));
 
             //logger
@@ -50,13 +48,15 @@ namespace TheEasy.Api
 
             app.UseMiddleware<ExceptionHandlerMiddleware>();
             app.UseHttpsRedirection();
-                
+
             app.UseAuthorization();
 
 
             app.MapControllers();
 
             app.Run();
+
+
         }
     }
 }

@@ -2,6 +2,7 @@
 using TheEasy.Api.Models;
 using TheEasy.Services.DTOs.Users;
 using TheEasy.Services.Interfaces;
+using TheEasy.Services.Pagination;
 
 namespace TheEasy.Api.Controllers;
 
@@ -15,15 +16,15 @@ public class UsersController : ControllerBase
         this.userService = userService;
 
     [HttpGet]
-    public async Task<IActionResult> GetAllAsync()
+    public async Task<IActionResult> GetAllAsync([FromQuery] PaginationParams @params)
         => Ok(new Response
         {
             StutusCode = 200,
             Message = "OK",
-            Data = await this.userService.RetrieveAllAsync()
+            Data = await this.userService.RetrieveAllAsync(@params)
         });
-        
-  
+
+
 
     [HttpGet]
     public async Task<IActionResult> GetByIdAsync(long id)

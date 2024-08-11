@@ -1,9 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TheEasy.Data.DbContexs;
 using TheEasy.Data.IRepositories;
 using TheEasy.Domain.Commans;
@@ -44,13 +39,13 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : Auditabl
 
     public async Task<TEntity> SelectByIdAsync(long id)
     {
-       return await this.dbSet.FirstOrDefaultAsync(e =>e.Id == id);
+        return await this.dbSet.FirstOrDefaultAsync(e => e.Id == id);
 
     }
 
     public async Task<TEntity> UpdateAsync(TEntity entity)
     {
-        var model =  this.dbSet.Update(entity);
+        var model = this.dbSet.Update(entity);
         return model.Entity;
 
     }

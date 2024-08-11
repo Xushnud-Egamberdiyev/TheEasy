@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheEasy.Domain", "TheEasy.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheEasy.Data", "TheEasy.Data\TheEasy.Data.csproj", "{84CA0016-F2C1-4273-A58A-90F4E8B2A6B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheEasy.Services", "TheEasy.Services\TheEasy.Services.csproj", "{BE04229D-8F65-473C-B552-1670406E3433}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheEasy.Services", "TheEasy.Services\TheEasy.Services.csproj", "{BE04229D-8F65-473C-B552-1670406E3433}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

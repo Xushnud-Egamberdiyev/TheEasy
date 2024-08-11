@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TheEasy.Domain.Commans;
+﻿using TheEasy.Domain.Commans;
 
 namespace TheEasy.Domain.Entities;
 

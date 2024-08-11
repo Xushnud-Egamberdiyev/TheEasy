@@ -1,9 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TheEasy.Domain.Entities;
 
 namespace TheEasy.Data.DbContexs;
@@ -15,5 +10,5 @@ public class AppDbContext : DbContext
         Database.Migrate();
     }
 
-    public DbSet<User> Users { get; set; }  
+    public DbSet<User> Users { get; set; }
 }
