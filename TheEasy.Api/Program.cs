@@ -52,6 +52,7 @@ namespace TheEasy.Api
             app.UseAuthorization();
 
 
+
             app.MapControllers();
 
             app.Run();
